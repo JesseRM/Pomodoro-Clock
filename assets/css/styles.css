@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    color: #fdfdfd;
+    text-transform: uppercase;
+}
+
+body {
+    background-color: #eeeeee;
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+button {
+    border: none;
+    background-color: #feecb4;
+    color: #3f4042;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+li span {
+    margin: 0.3rem 0.6rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 5.5rem;
+    display: inline-block;
+    margin-top: 4rem;
+    width: 100%;
+}
+
+.header span {
+    color: #3f4042;
+}
+
+.wrapper {
+    max-width: 38rem;
+    height: 30rem;
+    margin: 2rem auto;
+    box-shadow: 0.8rem 2.5rem 0.9rem  #888888;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    height: 8rem;
+    background-color: #77878f;
+}
+
+.duration {
+    width: 100%;
+    height: 4rem;
+    background-color: #e1dbe4;
+}
+
+.control {
+    color: #3f4042;
+    cursor: pointer;
+}
+
+.buttons {
+    width: 100%;
+    height: 1.8rem;
+    background-color: #feecb4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0;
+}
+
+.countdown {
+    width: 100%;
+    height: 20rem;
+    background-color: #a92a2a;
+}
+
+.start:hover {
+    background-color: #9cd897;
+}
+
+.pause:hover {
+    background-color: #f75e5e;
+}
+
+.resume:hover {
+    background-color: #62aaba;
+}
+
+.reset:hover {
+    background-color: #bc74d3;
+}
+
