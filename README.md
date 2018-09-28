@@ -11,5 +11,11 @@ Timer can be paused at any time by clicking 'Pause'; clicking on 'Resume' will r
 
 A message of 'Break' will be displayed when the user is supposed to be taking a break from work.
 
+## Technologies
+1. HTML
+2. CSS
+3. JavaScript
+4. Bootstrap
+
 ## Project Status
 This is a beginner project and the main functionalities have been complete.
