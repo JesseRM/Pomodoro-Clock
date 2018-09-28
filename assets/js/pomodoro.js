@@ -9,6 +9,7 @@ const resetBtn = document.querySelector(".reset");
 const timerDisplay = document.querySelector(".time");
 const workMinutes = document.querySelector("#workmin");
 const breakMinutes = document.querySelector("#breakmin");
+const breakText = document.querySelector(".break");
 
 let time = {
     workMin: 25,
@@ -19,14 +20,14 @@ let time = {
     isRunning: false,
     work: false,
     break: false,
-    timer: function(){
+    timer: function () {
         const secondsLeft = Math.round((time.then - Date.now()) / 1000);
         time.remainingSecs = secondsLeft;
-        if(secondsLeft === 0 && time.work === true){
+        if (secondsLeft === 0 && time.work === true) {
             clearInterval(time.timerID);
             time.work = false;
             startBreakTimer();
-        } else if(secondsLeft === 0 && time.break === true){
+        } else if (secondsLeft === 0 && time.break === true) {
             clearInterval(time.timerID);
             time.break = false;
             startWorkTimer();
@@ -35,80 +36,82 @@ let time = {
     }
 };
 
-workUpBtn.addEventListener("click", function (){
+workUpBtn.addEventListener("click", function () {
     time.workMin++;
     workMinutes.textContent = time.workMin;
 });
 
-workDownBtn.addEventListener("click", function (){
-    if(time.workMin > 1){
+workDownBtn.addEventListener("click", function () {
+    if (time.workMin > 1) {
         time.workMin--;
         workMinutes.textContent = time.workMin;
     }
 });
 
-breakUpBtn.addEventListener("click", function (){
+breakUpBtn.addEventListener("click", function () {
     time.breakMin++;
     breakMinutes.textContent = time.breakMin;
 });
 
-breakDownBtn.addEventListener("click", function (){
-    if(time.breakMin > 1){
+breakDownBtn.addEventListener("click", function () {
+    if (time.breakMin > 1) {
         time.breakMin--;
         breakMinutes.textContent = time.breakMin;
     }
 });
 
-startBtn.addEventListener("click", function (){
-    if(time.isRunning === false && time.timerID === null){
+startBtn.addEventListener("click", function () {
+    if (time.isRunning === false && time.timerID === null) {
         startWorkTimer();
     }
 });
 
-pauseBtn.addEventListener("click", function (){
+pauseBtn.addEventListener("click", function () {
     clearInterval(time.timerID);
     time.isRunning = false;
 });
 
-resumeBtn.addEventListener("click", function (){
-    if(time.isRunning === false){
+resumeBtn.addEventListener("click", function () {
+    if (time.isRunning === false) {
         startWorkTimer();
     }
 });
 
-resetBtn.addEventListener("click", function (){
+resetBtn.addEventListener("click", function () {
     resetTimer();
 });
 
 
-function startWorkTimer(){
+function startWorkTimer() {
    const now = Date.now();
-   if(time.remainingSecs === 0){
+   if (time.remainingSecs === 0) {
         time.then = now + (time.workMin * 60) * 1000;
-    } else{
+    } else {
         time.then = now + time.remainingSecs * 1000;
     }
 
+    breakText.textContent = '';
     time.timerID = setInterval(time.timer, 1000);
     time.isRunning = true;
     time.work = true;
 }
 
-function displayTimeLeft(seconds){
+function displayTimeLeft(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secondsLeft = seconds % 60;
     const display = `${minutes}:${secondsLeft < 10 ? '0':''}${secondsLeft}`;
     timerDisplay.textContent = display;
 }
 
-function startBreakTimer(){
+function startBreakTimer() {
     const now = Date.now();
     time.then = now + (time.breakMin * 60) * 1000;
     time.timerID = setInterval(time.timer, 1000);
     time.break = true;
+    breakText.textContent = 'Break';
 }
 
-function resetTimer(){
+function resetTimer() {
     clearInterval(time.timerID);
     time.workMin = 25;
     time.breakMin = 5;
