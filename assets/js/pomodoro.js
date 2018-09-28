@@ -26,10 +26,12 @@ let time = {
         if (secondsLeft === 0 && time.work === true) {
             clearInterval(time.timerID);
             time.work = false;
+            breakText.textContent = 'Break';
             startBreakTimer();
         } else if (secondsLeft === 0 && time.break === true) {
             clearInterval(time.timerID);
             time.break = false;
+            breakText.textContent = '';
             startWorkTimer();
         }
         displayTimeLeft(secondsLeft);
@@ -73,7 +75,11 @@ pauseBtn.addEventListener("click", function () {
 
 resumeBtn.addEventListener("click", function () {
     if (time.isRunning === false) {
-        startWorkTimer();
+        if (time.work === true) {
+            startWorkTimer();
+        } else {
+            startBreakTimer();
+        }
     }
 });
 
@@ -89,8 +95,7 @@ function startWorkTimer() {
     } else {
         time.then = now + time.remainingSecs * 1000;
     }
-
-    breakText.textContent = '';
+    
     time.timerID = setInterval(time.timer, 1000);
     time.isRunning = true;
     time.work = true;
@@ -108,7 +113,6 @@ function startBreakTimer() {
     time.then = now + (time.breakMin * 60) * 1000;
     time.timerID = setInterval(time.timer, 1000);
     time.break = true;
-    breakText.textContent = 'Break';
 }
 
 function resetTimer() {
@@ -125,4 +129,5 @@ function resetTimer() {
     workMinutes.textContent = time.workMin;
     breakMinutes.textContent = time.breakMin;
     timerDisplay.textContent = "00:00";
+    breakText.textContent = '';
 }
