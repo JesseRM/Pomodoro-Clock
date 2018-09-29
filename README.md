@@ -4,6 +4,8 @@
  timer and be able to start it back up from where it left off.
  
 ## Usage
+[Live Demo](https://jesserm.github.io/Pomodoro-Clock/)
+
 The default work time is set to 25 min and the default break time is set to 5 min. You can increase or decrease the min by
 clicking '+' or '-'.
 
